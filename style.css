@@ -7,7 +7,7 @@
 :root{
   --bg: #1E1E1E;
   --bg-card: #302F3D;
-  --text: #837E9F;
+  --text: #837e9f;
   --shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -15,6 +15,10 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Inter', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: var(--text);
 }
 #main {
   padding: 1rem;
@@ -66,8 +70,11 @@ body {
 }
 #links span {
   display: flex;
-  gap: ;
+  gap: 10px;
   align-items: center;
+}
+#links a:hover{
+  color: rgba(131, 126, 159, 0.4);
 }
 
 #right-side {
