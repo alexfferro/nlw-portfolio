@@ -9,6 +9,7 @@
   --bg-card: #302F3D;
   --text: #837e9f;
   --shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  --bg-tag: #CB92B1;
 }
 
 body {
@@ -16,24 +17,28 @@ body {
   color: var(--text);
   font-family: 'Inter', sans-serif;
 }
+
 a {
   text-decoration: none;
   color: var(--text);
 }
+a:hover{
+  color: rgba(131, 126, 159, 0.4);
+}
+h2 {
+  font-size: 20px;
+}
 #main {
-  padding: 1rem;
+  padding: 40px;
   display: flex;
   gap: 60px;
 }
-
 #left-side {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 348px;
-  height: 90vh;
+  max-width: 348px;
 }
-
 #profile {
   background: var(--bg-card);
   text-align: center;
@@ -55,7 +60,6 @@ a {
   font-size: 13px;
   font-weight: light;
 }
-
 #links {
   display: flex;
   flex-direction: column;
@@ -73,12 +77,126 @@ a {
   gap: 10px;
   align-items: center;
 }
-#links a:hover{
-  color: rgba(131, 126, 159, 0.4);
+#techs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+  padding: 30px 0 30px 20px;
+}
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-left: 10px;
+}
+#techs .tag {
+  display: flex;
+  width: 86px;
+  height: 24px;
+  background: var(--bg-tag);
+  font-size: 10px;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  border-radius: 30px;
+}
+#experiencias, #education {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+  padding: 30px 0 30px 20px;
+}
+#experiencias ul, #education ul {
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#experiencias ul li span, #education ul li span{
+  font-size: 14px;
+  font-weight: bold;
+}
+#experiencias ul li p, #education ul li p{
+  font-size: 12px;
 }
 
 #right-side {
-  width: 70vw;
-  height: 300px;
-  border: 1px solid blue;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#projects {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card);
+  text-align: center;
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+  padding: 30px;
+}
+#repos {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.repo {
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+  padding: 30px;
+}
+#repos i {
+  font-size: 20px;
+  font-weight: bold;
+}
+#repos .repo-title{
+  display: flex;
+  gap: 1rem;
+  font-weight: bold;
+  padding-bottom: 22px;
+}
+#repos p {
+  font-size: 14px;
+  padding-bottom: 47px;
+}
+#repos .status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#repos .status .git{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.git div, .prog-lang div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+#recent-posts {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  text-align: center;
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+  padding: 30px;
+}
+footer {
+  text-align: center;
+  font-size: 14px;
+  padding-bottom: 20px;
 }
