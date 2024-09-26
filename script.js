@@ -1,6 +1,7 @@
 const username = 'alexfferro'
 const repos = document.querySelector('#repos')
 const posts = document.querySelector('#posts')
+const TOKEN = process.env.TOKEN
 
 function calcularIntervaloDeTempo(dataPostagem) {
   // Cria objetos Date para a data do post e a data atual
