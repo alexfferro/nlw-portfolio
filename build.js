@@ -1,4 +1,5 @@
-let TOKEN = null
+const axios = require('axios')
+
 const username = 'alexfferro'
 const repos = document.querySelector('#repos')
 const posts = document.querySelector('#posts')
@@ -34,26 +35,6 @@ function calcularIntervaloDeTempo(dataPostagem) {
       const horas = Math.floor((diferencaEmMilissegundos % umDiaEmMilissegundos) / (1000 * 60 * 60));
       return `${horas} horas atrás`;
   }
-}
-function FetchGitHubPosts(){
-
-  fetch(`https://api.github.com/users/${username}/repos`, {
-    headers: {
-      'Authorization': `token ${TOKEN}`
-    }
-  })
-  .then( async res => {
-    if(!res.ok) {
-      throw new Error(res.status)
-    }
-    const data = await res.json()
-    const limitedData = data.slice(1, 5)
-
-    limitedData.forEach(item => {
-      const repoDiv = createRepoElement(item)
-      repos.appendChild(repoDiv)
-    })
-  }).catch(e => console.error(e))
 }
 function createRepoElement(item){
   const repoDiv = document.createElement('a');
@@ -148,9 +129,9 @@ function createPostElement(item){
 }
 async function fetchGitHubCommits(username, maxCommits = 4) {
   try {
-    const response = await fetch(`https://api.github.com/users/${username}/events`, {
+    const response = await axios.get(`https://api.github.com/users/${username}/events`, {
       headers: {
-        'Authorization': `token ${TOKEN}`
+        'Authorization': `token ${process.env.TOKEN}`
       }
     });
 
@@ -200,15 +181,25 @@ async function fetchGitHubCommits(username, maxCommits = 4) {
     console.error('Erro geral:', error);
   }
 }
-
-fetch('./config.json')
-  .then(response => response.json())
-  .then(data => {
-    const token = data.GITHUB_TOKEN;
-    TOKEN = token
-    fetchGitHubCommits(username, 4)
-    FetchGitHubPosts()
+function FetchGitHubPosts(){
+  axios.get(`https://api.github.com/users/${username}/repos`, {
+    headers: {
+      'Authorization': `token ${process.env.TOKEN}`
+    }
   })
-  .catch(error => {
-    console.error('Erro ao carregar as credenciais:', error);
-  });
+  .then( async res => {
+    if(!res.ok) {
+      throw new Error(res.status)
+    }
+    const data = await res.json()
+    const limitedData = data.slice(1, 5)
+
+    limitedData.forEach(item => {
+      const repoDiv = createRepoElement(item)
+      repos.appendChild(repoDiv)
+    })
+  }).catch(e => console.error(e))
+}
+
+fetchGitHubCommits(username, 4)
+FetchGitHubPosts()
