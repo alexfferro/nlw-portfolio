@@ -1,7 +1,6 @@
 const username = 'alexfferro'
 const repos = document.querySelector('#repos')
 const posts = document.querySelector('#posts')
-const TOKEN = process.env.TOKEN
 
 function calcularIntervaloDeTempo(dataPostagem) {
   // Cria objetos Date para a data do post e a data atual
@@ -128,11 +127,7 @@ function createPostElement(item){
 }
 async function fetchGitHubCommits(username, maxCommits = 4) {
   try {
-    const response = await fetch(`https://api.github.com/users/${username}/events`, {
-      headers: {
-        'Authorization': `token ${process.env.TOKEN}`
-      }
-    });
+    const response = await fetch(`https://api.github.com/users/${username}/events`);
 
     if (!response.ok) {
       throw new Error(`Erro ao buscar eventos do usuário: ${response.status}`);
@@ -143,11 +138,7 @@ async function fetchGitHubCommits(username, maxCommits = 4) {
 
     const promises = commits.map(async (commit) => {
       try {
-        const repoResponse = await fetch(commit.repo.url, {
-          headers: {
-            'Authorization': `token ${TOKEN}`
-          }
-        });
+        const repoResponse = await fetch(commit.repo.url);
 
         if (!repoResponse.ok) {
           throw new Error(`Erro ao buscar informações do repositório ${commit.repo.name}: ${repoResponse.status}`);
@@ -181,11 +172,7 @@ async function fetchGitHubCommits(username, maxCommits = 4) {
   }
 }
 function FetchGitHubPosts(){
-  fetch(`https://api.github.com/users/${username}/repos`, {
-    headers: {
-      'Authorization': `token ${process.env.TOKEN}`
-    }
-  })
+  fetch(`https://api.github.com/users/${username}/repos`)
   .then( async res => {
     if(!res.ok) {
       throw new Error(res.status)
