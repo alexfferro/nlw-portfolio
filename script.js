@@ -1,4 +1,3 @@
-const axios = require('axios')
 const username = 'alexfferro'
 const repos = document.querySelector('#repos')
 const posts = document.querySelector('#posts')
@@ -128,7 +127,7 @@ function createPostElement(item){
 }
 async function fetchGitHubCommits(username, maxCommits = 4) {
   try {
-    const response = await axios.get(`https://api.github.com/users/${username}/events`, {
+    const response = await fetch(`https://api.github.com/users/${username}/events`, {
       headers: {
         'Authorization': `token ${process.env.TOKEN}`
       }
@@ -181,7 +180,7 @@ async function fetchGitHubCommits(username, maxCommits = 4) {
   }
 }
 function FetchGitHubPosts(){
-  axios.get(`https://api.github.com/users/${username}/repos`, {
+  fetch(`https://api.github.com/users/${username}/repos`, {
     headers: {
       'Authorization': `token ${process.env.TOKEN}`
     }
