@@ -1,0 +1,22 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies (if needed for your project)
+        run: npm install
+      - name: Build
+        run: node build.js
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build  # Folder containing generated static content
+          branch: gh-pages  # Branch for deployment
+          token: ${{ secrets.TOKEN }}
