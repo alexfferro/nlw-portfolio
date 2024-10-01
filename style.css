@@ -18,6 +18,12 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+#navbar {
+  display: none;
+}
+#closeMenu {
+  display: none;
+}
 a {
   text-decoration: none;
   color: var(--text);
@@ -126,14 +132,12 @@ h2 {
 #experiencias ul li p, #education ul li p{
   font-size: 12px;
 }
-
 #right-side {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
-
 #projects {
   display: flex;
   justify-content: space-between;
@@ -143,6 +147,7 @@ h2 {
   box-shadow: var(--shadow);
   border-radius: 20px;
   padding: 30px;
+  min-width: 300px;
 }
 #repos {
   display: flex;
@@ -156,7 +161,8 @@ h2 {
   border-radius: 20px;
   padding: 30px;
   flex-basis: calc(50% - 15px);
-  height: 186px;
+  flex-grow: 1;
+  min-width: 300px;
 }
 #repos i {
   font-size: 20px;
@@ -197,11 +203,13 @@ h2 {
   box-shadow: var(--shadow);
   border-radius: 20px;
   padding: 30px;
+  min-width: 300px
 }
 #posts {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 300px;
 }
 .post {
   display: flex;
@@ -238,4 +246,81 @@ footer {
   text-align: center;
   font-size: 14px;
   padding-bottom: 20px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fundo escuro transparente */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 2; /* Para ficar abaixo do menu */
+}
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+body.noscroll {
+  overflow: hidden;
+}
+
+@media (max-width: 768px){
+  .off-canvas {
+    position: fixed;
+    top: 0;
+    left: -500px; /* Inicialmente escondido */
+    height: 100vh;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    margin: 0 1rem 1rem 1rem;
+    z-index: 3;
+    padding: 10px;
+  }
+  .off-canvas.open {
+    left: 0;
+    display: flex;
+  }
+  #closeMenu {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+  }
+  #projects a{
+    display: none;
+  }
+
+  #navbar {
+    display: block;
+  }
+  #navbar button{
+    font-size: 30px;
+    background: none;
+    color: var(--text);
+    border: none;
+    transition: background 0.2s ease;
+  }
+  #navbar button:hover {
+    color: var(--bg-card);
+  }
+  .post-avatar img{
+    display: none;
+  }
+  .post-title h2{
+    font-size: 1rem;
+    font-weight: 400;
+    margin-right: 5px;
+  }
+  .post-detail {
+    display: none;
+  }
 }

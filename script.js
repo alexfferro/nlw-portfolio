@@ -1,3 +1,21 @@
+document.getElementById('openMenu').addEventListener('click', function() {
+  document.getElementById('left-side').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+  document.body.classList.add('noscroll');
+});
+
+document.getElementById('closeMenu').addEventListener('click', function() {
+  document.getElementById('left-side').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  document.body.classList.remove('noscroll');
+});
+
+document.getElementById('overlay').addEventListener('click', function() {
+  document.getElementById('left-side').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  document.body.classList.remove('noscroll'); // Permitir scroll do fundo novamente
+});
+
 const username = 'alexfferro'
 const repos = document.querySelector('#repos')
 const posts = document.querySelector('#posts')
@@ -189,3 +207,4 @@ function FetchGitHubPosts(){
 
 fetchGitHubCommits(username, 4)
 FetchGitHubPosts()
+

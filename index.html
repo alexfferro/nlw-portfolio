@@ -12,7 +12,8 @@
 </head>
 <body>
   <div id="main">
-    <div id="left-side">
+    <div id="left-side" class="off-canvas">
+      <button id="closeMenu">&times;</button>
       <!-- Profile -->
       <div id="profile">
         <img src="https://avatars.githubusercontent.com/alexfferro" alt="foto de perfil do Alex com o léo no colo">
@@ -116,6 +117,11 @@
     </div>
     <div id="right-side">
       <div id="projects">
+        <nav id="navbar">
+          <button id="openMenu">
+            <i class="ph ph-list"></i>
+          </button>
+        </nav>
         <h2>My Projects</h2>
         <a href="https://github.com/alexfferro?tab=repositories" target="_blank">Veja todos</a>
       </div>
@@ -128,6 +134,7 @@
       </div>
     </div>
   </div>
+  <div id="overlay" class="overlay"></div>
   <footer>
     Feito com 💜 por Alex Ferro
   </footer>
