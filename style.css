@@ -272,7 +272,7 @@ body.noscroll {
     position: fixed;
     top: 0;
     left: -500px; /* Inicialmente escondido */
-    height: 100vh;
+    height: 100%;
     overflow-y: auto;
     transition: left 0.3s ease;
     margin: 0 1rem 1rem 1rem;
