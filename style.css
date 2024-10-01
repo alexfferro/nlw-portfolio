@@ -266,7 +266,19 @@ footer {
 body.noscroll {
   overflow: hidden;
 }
-
+#whatsapp-me i{
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 50px;
+  color: white;
+  background-color: hsla(130, 61%, 50%, 1);
+  padding: .5rem;
+  border-radius: 20px;
+}
+#whatsapp-me i:hover {
+  background-color: hsla(130, 61%, 50%, 0.8);
+}
 @media (max-width: 768px){
   .off-canvas {
     position: fixed;
@@ -322,5 +334,9 @@ body.noscroll {
   }
   .post-detail {
     display: none;
+  }
+  #whatsapp-me i {
+    font-size: 30px;
+    padding: 0.4rem;
   }
 }
