@@ -275,6 +275,7 @@ body.noscroll {
   background-color: hsla(130, 61%, 50%, 1);
   padding: .5rem;
   border-radius: 20px;
+  transition: opacity 0.5s ease;
 }
 #whatsapp-me i:hover {
   background-color: hsla(130, 61%, 50%, 0.8);
